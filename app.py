@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'minimarketsemesta.mysql.database.azure.com'
 app.config['MYSQL_USER'] = 'adminsemesta'
 app.config['MYSQL_PASSWORD'] = 'Semesta123'
-app.config['MYSQL_DB'] = 'minimarket_semesta
+app.config['MYSQL_DB'] = 'minimarket_semesta'
 app.config['MYSQL_PORT'] = 3306
 
 
