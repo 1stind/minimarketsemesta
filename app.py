@@ -9,10 +9,12 @@ import hashlib
 
 app = Flask(__name__)
  
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'minimarket_semesta'
+app.config['MYSQL_HOST'] = 'minimarketsemesta.mysql.database.azure.com'
+app.config['MYSQL_USER'] = 'adminsemesta'
+app.config['MYSQL_PASSWORD'] = 'Semesta123'
+app.config['MYSQL_DB'] = 'minimarket_semesta
+app.config['MYSQL_PORT'] = 3306
+
 
 app.secret_key = 'secret key'
 CORS(app, origins=["http://127.0.0.1:3000"])
