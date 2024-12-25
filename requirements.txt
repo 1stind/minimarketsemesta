@@ -1,0 +1,7 @@
+lask==2.3.3
+Flask-MySQLdb==0.2.0
+mysql-connector-python==8.0.34
+Flask-Limiter==3.2.3
+Flask-SocketIO==5.3.4
+Flask-Cors==3.0.10
+python-socketio==5.8.0
