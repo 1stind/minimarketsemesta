@@ -289,7 +289,7 @@ def input_transaksi():
             cursor.close()
             username = session['username']
             # Kembalikan data ke template
-            return render_template('dashboard kasir.html', produk_list=produk_list, total_pembayaran=total_pembayaran, kembalian=kembalian, tanggal=tanggal, no_nota=no_nota, username=username)
+            return render_template('dashboard kasir.html', username=username)
 
     # GET request, tampilkan halaman transaksi
     return render_template('dashboard kasir.html', produk_list=session.get('produk_list', []), total_pembayaran=session.get('total_pembayaran', 0), kembalian=session.get('kembalian', 0))
