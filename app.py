@@ -142,12 +142,12 @@ def handle_send_message(data):
 @app.route('/payment',  methods=['GET', 'POST'])
 def duitku():
     # Ambil data dari session
-    # no_nota = session.get('no_nota')
-    session['no_nota'] = no_nota
-    session['total_pembayaran'] = total_pembayaran
-    # total_pembayaran = session.get('total_pembayaran')
+    no_nota = session.get('no_nota')
+    # session['no_nota'] = no_nota
+    # session['total_pembayaran'] = total_pembayaran
+    total_pembayaran = session.get('total_pembayaran')
     # produk_list = session.get('produk_list', [])
-    session['produk_list'] = produk_list
+    # session['produk_list'] = produk_list
     print(no_nota)
     print(total_pembayaran)
     print(produk_list)
