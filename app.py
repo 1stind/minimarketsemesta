@@ -42,7 +42,7 @@ def home():
     return redirect(url_for('login'))  # Mengarahkan ke fungsi 'login'
 
 @app.route('/login', methods=['GET', 'POST'])
-@limiter.limit("3 per minute")  # Batasan 3 permintaan per menit
+# @limiter.limit("3 per minute")  # Batasan 3 permintaan per menit
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
