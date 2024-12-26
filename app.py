@@ -82,9 +82,9 @@ def logout():
         session.pop('id_akun', None)
         session.pop('username', None)
         session.pop('password', None)
-        return redirect(url_for('login'))
+        return redirect(url_for('home'))
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('home'))
         
 @app.route('/chat/<kasir>')
 def chat_page(kasir):
@@ -289,7 +289,7 @@ def input_transaksi():
             cursor.close()
             username = session['username']
             # Kembalikan data ke template
-            return render_template('dashboard kasir.html', username=username)
+            return render_template('dashboard kasir.html', kembalian=kembalian, tanggal=tanggal, no_nota=no_nota, username=username)
 
     # GET request, tampilkan halaman transaksi
     return render_template('dashboard kasir.html', produk_list=session.get('produk_list', []), total_pembayaran=session.get('total_pembayaran', 0), kembalian=session.get('kembalian', 0))
