@@ -6,6 +6,7 @@ from flask_limiter.util import get_remote_address
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 import hashlib
+import requests
 
 app = Flask(__name__)
  
@@ -179,7 +180,7 @@ def duitku():
 
     # Kirim permintaan ke API Duitku
     try:
-        response = request.post(DUITKU_BASE_URL, json=payload, headers=headers)
+        response = requests.post(DUITKU_BASE_URL, json=payload, headers=headers)
         result = response.json()
 
         # Periksa apakah API berhasil
