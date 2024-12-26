@@ -250,8 +250,9 @@ def input_transaksi():
             total_pembayaran = sum(produk['sub_total'] for produk in produk_list)
             session['total_pembayaran'] = total_pembayaran
             print(total_pembayaran)
+            username = session['username']
 
-            return render_template('dashboard kasir.html', produk_list=produk_list, total_pembayaran=total_pembayaran, tanggal=tanggal, no_nota=no_nota)
+            return render_template('dashboard kasir.html', produk_list=produk_list, total_pembayaran=total_pembayaran, tanggal=tanggal, no_nota=no_nota, username=username)
 
         elif 'dibayarkan' in request.form:
             # Proses pembayaran
@@ -306,7 +307,6 @@ def riwayat():
             transaksi_list = []
             for row in riwayat_transaksi:
                 transaksi_list.append({
-                    'my_row_id': row['my_row_id'],
                     'no_nota': row['no_nota'],
                     'id_akun': row['id_akun'],
                     'id_produk': row['id_produk'],
@@ -334,7 +334,6 @@ def riwayat():
                 SELECT 
                     k.id_akun,
                     k.username,
-                    t.my_row_id,
                     t.tanggal_transaksi,
                     t.total_pembayaran,
                     t.dibayarkan,
@@ -353,7 +352,6 @@ def riwayat():
                 SELECT 
                     k.id_akun,
                     k.username,
-                    t.my_row_id,
                     t.no_nota,
                     t.tanggal_transaksi,
                     t.total_pembayaran,
