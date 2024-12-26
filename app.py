@@ -144,11 +144,8 @@ def handle_send_message(data):
 def duitku():
     # Ambil data dari session
     no_nota = session.get('no_nota')
-    # session['no_nota'] = no_nota
-    # session['total_pembayaran'] = total_pembayaran
     total_pembayaran = session.get('total_pembayaran')
     produk_list = session.get('produk_list', [])
-    # session['produk_list'] = produk_list
     print(no_nota)
     print(total_pembayaran)
     print(produk_list)
@@ -172,10 +169,11 @@ def duitku():
         "merchantOrderId": no_nota,
         "productDetails": "Pembelian Produk",
         "callbackUrl": callback_url,
+        "email":"minimarketsemesta@gmail.com",
         # "returnUrl": return_url,
         "signature": signature
     }
-
+    print(payload)
     headers = {"Content-Type": "application/json"}
 
     # Kirim permintaan ke API Duitku
@@ -183,7 +181,10 @@ def duitku():
         response = requests.post(DUITKU_BASE_URL, json=payload, headers=headers)
         result = response.json()
 
-        # Periksa apakah API berhasil
+        # Tambahkan logging untuk response
+        print(f"Response status: {response.status_code}")
+        print(f"Response body: {response.text}")
+
         if response.status_code == 200 and "paymentUrl" in result:
             payment_url = result["paymentUrl"]
             return redirect(payment_url)  # Redirect ke URL pembayaran
@@ -191,7 +192,7 @@ def duitku():
             return jsonify({"error": "Gagal membuat pembayaran.", "message": result.get("message", "Unknown error")}), 400
 
     except Exception as e:
-        return jsonify({"error": "Terjadi kesalahan saat menghubungi API Duitku.", "details": str(e)}), 500 
+        return jsonify({"error": "Terjadi kesalahan saat menghubungi API Duitku.", "details": str(e)}), 500
     
 @app.route('/transaksi', methods=['GET'])
 def transaksi():
@@ -215,6 +216,7 @@ def input_transaksi():
             session['tanggal'] = tanggal
             pilih_produk = request.form['id_produk']
             kuantitas_produk = int(request.form['kuantitas_produk'])
+            print(kuantitas_produk)
 
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.execute("SELECT * FROM tbl_produk WHERE id_produk = %s", (pilih_produk,))
@@ -248,7 +250,7 @@ def input_transaksi():
 
             session['produk_list'] = produk_list
             print(produk_list)
-            total_pembayaran = sum(produk['sub_total'] for produk in produk_list)
+            total_pembayaran = int(sum(produk['sub_total'] for produk in produk_list))
             session['total_pembayaran'] = total_pembayaran
             print(total_pembayaran)
             username = session['username']
@@ -290,7 +292,9 @@ def input_transaksi():
             cursor.close()
             username = session['username']
             # Kembalikan data ke template
-            return render_template('dashboard kasir.html', kembalian=kembalian, tanggal=tanggal, no_nota=no_nota, username=username)
+            session.pop('produk_list', None)
+            session.pop('total_pembayaran', None)
+            return render_template('dashboard kasir.html', kembalian=kembalian, username=username)
 
     # GET request, tampilkan halaman transaksi
     return render_template('dashboard kasir.html', produk_list=session.get('produk_list', []), total_pembayaran=session.get('total_pembayaran', 0), kembalian=session.get('kembalian', 0))

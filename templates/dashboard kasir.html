@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ url_for('chat_page', username=session['username']) }}" class="nav-link">
+              <a href="{{ url_for('chat_page', kasir=session.get('username')) }}" class="nav-link">
                   <i class="fa-solid fa-envelope"></i>
                   <p>Pesan</p>
               </a>
@@ -65,7 +65,7 @@
             </a>
         </li>
           <li class="nav-item">
-            <a href="{{ url_for('riwayat') }}" class="nav-link">
+            <a href="{{ url_for('login') }}" class="nav-link">
                 <i class="fa-solid fa-envelope"></i>
                 <p>Admin</p>
             </a>
