@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'minimarketsemesta'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6E171A61DF5F4DD5B59E8FA0CF557051 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_883E35F71CB94023B1624513B45970A5 }}
