@@ -306,7 +306,7 @@ def riwayat():
             transaksi_list = []
             for row in riwayat_transaksi:
                 transaksi_list.append({
-                    'id_transaksi': row['id_transaksi'],
+                    'my_row_id': row['my_row_id'],
                     'no_nota': row['no_nota'],
                     'id_akun': row['id_akun'],
                     'id_produk': row['id_produk'],
@@ -334,7 +334,7 @@ def riwayat():
                 SELECT 
                     k.id_akun,
                     k.username,
-                    t.id_transaksi,
+                    t.my_row_id,
                     t.tanggal_transaksi,
                     t.total_pembayaran,
                     t.dibayarkan,
@@ -353,7 +353,7 @@ def riwayat():
                 SELECT 
                     k.id_akun,
                     k.username,
-                    t.id_transaksi,
+                    t.my_row_id,
                     t.no_nota,
                     t.tanggal_transaksi,
                     t.total_pembayaran,
