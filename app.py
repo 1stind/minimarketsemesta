@@ -140,14 +140,14 @@ def handle_send_message(data):
     }, broadcast=True)
 
 @app.route('/payment',  methods=['GET', 'POST'])
-def payment():
+def duitku():
     # Ambil data dari session
     # no_nota = session.get('no_nota')
     session['no_nota'] = no_nota
     session['total_pembayaran'] = total_pembayaran
     # total_pembayaran = session.get('total_pembayaran')
     # produk_list = session.get('produk_list', [])
-    produk_list = session.get('produk_list', [])
+    session['produk_list'] = produk_list
     print(no_nota)
     print(total_pembayaran)
     print(produk_list)
@@ -201,7 +201,6 @@ def transaksi():
         return render_template('dashboard kasir.html', id_akun=id_akun, username=username)
     else:
         return redirect(url_for('login'))  # Redirect to login page if not logged in
-        
     
 @app.route('/transaksi', methods=['GET', 'POST'])
 def input_transaksi():
@@ -247,8 +246,10 @@ def input_transaksi():
                 produk_list.append(new_product)
 
             session['produk_list'] = produk_list
+            print(produk_list)
             total_pembayaran = sum(produk['sub_total'] for produk in produk_list)
             session['total_pembayaran'] = total_pembayaran
+            print(total_pembayaran)
 
             return render_template('dashboard kasir.html', produk_list=produk_list, total_pembayaran=total_pembayaran, tanggal=tanggal, no_nota=no_nota)
 
