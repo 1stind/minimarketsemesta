@@ -14,8 +14,8 @@
       <div class="col-md-6">
         <div class="card mt-5">
           <div class="card-body">
-            <h2 class="card-title text-center">Login Akun</h2>
-            <form id="form-login" action="/login" method="post">
+            <h2 class="card-title text-center"> Akun</h2>
+            <form id="form-login" action="/" method="post">
               <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
@@ -61,7 +61,7 @@
 
     // Kirim permintaan AJAX ke server
     $.ajax({
-      url: '/login',
+      url: '/',
       type: 'POST',
       data: formData,
       success: function (response) {
