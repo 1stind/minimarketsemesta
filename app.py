@@ -147,7 +147,7 @@ def payment():
 
     # Siapkan payload untuk API Duitku
     payment_method = request.form.get('payment_method', 'VC')  # Default ke Virtual Credit (VC)
-    # callback_url = "http://yourdomain.com/callback"  # URL untuk menerima notifikasi pembayaran
+    callback_url = "https://minimarketsemesta-a2bzf3fwd8a8fshq.canadacentral-01.azurewebsites.net/payment"  # URL untuk menerima notifikasi pembayaran
     # return_url = "http://yourdomain.com/return"  # URL untuk redirect setelah pembayaran
 
     # Buat signature
@@ -160,7 +160,7 @@ def payment():
         "paymentMethod": payment_method,
         "merchantOrderId": no_nota,
         "productDetails": "Pembelian Produk",
-        # "callbackUrl": callback_url,
+        "callbackUrl": callback_url,
         # "returnUrl": return_url,
         "signature": signature
     }
