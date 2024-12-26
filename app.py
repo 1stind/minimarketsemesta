@@ -37,7 +37,7 @@ MERCHANT_KEY = "d2a335e77105918ce19b9733f9e9fd52"  # Ganti dengan merchant key A
 
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 @limiter.limit("3 per minute")  # Batasan 3 permintaan per menit
 def login():
     if request.method == 'POST':
