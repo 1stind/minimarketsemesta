@@ -31,7 +31,7 @@
                 </li>
                 <!-- Tombol Sign Out -->
                 <li class="nav-item">
-                    <a href="https://minimarketsemesta-a2bzf3fwd8a8fshq.canadacentral-01.azurewebsites.net/logout" class="btn btn-default btn-flat float-end ms-2">Sign out</a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-default btn-flat float-end ms-2">Sign out</a>
                 </li>
             </ul> <!--end::Navbar Links-->
         </div> <!--end::Container-->
@@ -53,19 +53,19 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://minimarketsemesta-a2bzf3fwd8a8fshq.canadacentral-01.azurewebsites.net/chat/{{ session['username'] }}" class="nav-link">
+              <a href="{{ url_for('chat_page', username=session['username']) }}" class="nav-link">
                   <i class="fa-solid fa-envelope"></i>
                   <p>Pesan</p>
               </a>
           </li>
           <li class="nav-item">
-            <a href="https://minimarketsemesta-a2bzf3fwd8a8fshq.canadacentral-01.azurewebsites.net/payment" class="nav-link">
+            <a href="{{ url_for('duitku') }}" class="nav-link">
                 <i class="fa-solid fa-envelope"></i>
                 <p>E-Payment</p>
             </a>
         </li>
           <li class="nav-item">
-            <a href="https://minimarketsemesta-a2bzf3fwd8a8fshq.canadacentral-01.azurewebsites.net/admin/riwayat" class="nav-link">
+            <a href="{{ url_for('riwayat') }}" class="nav-link">
                 <i class="fa-solid fa-envelope"></i>
                 <p>Admin</p>
             </a>

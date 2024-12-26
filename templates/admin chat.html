@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://minimarketsemesta-a2bzf3fwd8a8fshq.canadacentral-01.azurewebsites.net/logout" class="btn btn-default btn-flat float-end ms-2">Sign out</a>
+                        <a href="{{ url_for('logout') }}" class="btn btn-default btn-flat float-end ms-2">Sign out</a>
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
                 <nav class="mt-2">
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="https://minimarketsemesta-a2bzf3fwd8a8fshq.canadacentral-01.azurewebsites.net/transaksi" class="nav-link">
+                            <a href="{{ url_for('transaksi') }}" class="nav-link">
                                 <i class="fa-solid fa-house"></i>
                                 <p>Dashboard</p>
                             </a>
