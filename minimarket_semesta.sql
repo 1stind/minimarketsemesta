@@ -32,7 +32,8 @@ CREATE TABLE `tbl_akun` (
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `role` varchar(15) NOT NULL
+  `role` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_akun`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -56,7 +57,8 @@ CREATE TABLE `tbl_chat` (
   `pengirim` varchar(50) NOT NULL,
   `penerima` varchar(50) NOT NULL,
   `chat` varchar(50) NOT NULL,
-  `waktu_chat` datetime NOT NULL DEFAULT current_timestamp()
+  `waktu_chat` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id_chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -84,7 +86,8 @@ INSERT INTO `tbl_chat` (`id_chat`, `pengirim`, `penerima`, `chat`, `waktu_chat`)
 CREATE TABLE `tbl_produk` (
   `id_produk` varchar(50) NOT NULL,
   `nama_produk` varchar(50) NOT NULL,
-  `harga_satuan` float NOT NULL
+  `harga_satuan` float NOT NULL,
+  PRIMARY KEY (`id_produk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -123,7 +126,7 @@ INSERT INTO `tbl_produk` (`id_produk`, `nama_produk`, `harga_satuan`) VALUES
 --
 
 CREATE TABLE `tbl_transaksi` (
-  `id_transaksi` int(11) NOT NULL,
+  `id_transaksi` int(11) NOT NULL AUTO_INCREMENT,
   `no_nota` int(10) NOT NULL,
   `id_akun` int(11) NOT NULL,
   `id_produk` varchar(11) NOT NULL,
@@ -133,9 +136,9 @@ CREATE TABLE `tbl_transaksi` (
   `tanggal_transaksi` datetime NOT NULL,
   `total_pembayaran` int(10) NOT NULL,
   `dibayarkan` int(11) NOT NULL,
-  `kembalian` int(11) NOT NULL
+  `kembalian` int(11) NOT NULL,
+  PRIMARY KEY (`id_transaksi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `tbl_transaksi`
 --
