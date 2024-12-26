@@ -148,6 +148,9 @@ def payment():
     # total_pembayaran = session.get('total_pembayaran')
     # produk_list = session.get('produk_list', [])
     produk_list = session.get('produk_list', [])
+    print(no_nota)
+    print(total_pembayaran)
+    print(produk_list)
 
     if not no_nota or not total_pembayaran or not produk_list:
         return jsonify({"error": "Data transaksi tidak lengkap."}), 400
